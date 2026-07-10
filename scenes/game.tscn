@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bxp6ci14jmixm"]
+
+[ext_resource type="PackedScene" uid="uid://diq70osqabhjn" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://b8wica6jxbsid" path="res://scenes/slime.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Node2D" unique_id=1178695795]
+
+[node name="Player" parent="." unique_id=1692118788 instance=ExtResource("1_uwrxv")]
+position = Vector2(586, 308)
+scale = Vector2(4, 4)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2025377231]
+position = Vector2(1.25, 2.75)
+scale = Vector2(0.25, 0.25)
+position_smoothing_enabled = true
+
+[node name="Slime" parent="." unique_id=1504390151 instance=ExtResource("2_yqjtg")]
+position = Vector2(890, 324)
+scale = Vector2(2.3, 2.3)
