@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pkje8kf8fn4x"
-path="res://.godot/imported/player.png-4508374c418cbfe7b79c5beffcb67188.ctex"
+uid="uid://4w6dksf3o05p"
+path="res://.godot/imported/LifeBarMiniProgress.png-533cc40d9576c3fb512be9e3c65bf88f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/player.png"
-dest_files=["res://.godot/imported/player.png-4508374c418cbfe7b79c5beffcb67188.ctex"]
+source_file="res://assets/ui/LifeBarMiniProgress.png"
+dest_files=["res://.godot/imported/LifeBarMiniProgress.png-533cc40d9576c3fb512be9e3c65bf88f.ctex"]
 
 [params]
 
