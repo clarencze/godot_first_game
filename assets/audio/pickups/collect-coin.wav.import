@@ -7,7 +7,7 @@ path="res://.godot/imported/collect-coin.wav-cf1ea88cfa6899320766342e3cb4d63e.sa
 
 [deps]
 
-source_file="res://assets/audio/collect-coin.wav"
+source_file="res://assets/audio/pickups/collect-coin.wav"
 dest_files=["res://.godot/imported/collect-coin.wav-cf1ea88cfa6899320766342e3cb4d63e.sample"]
 
 [params]

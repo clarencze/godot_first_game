@@ -7,7 +7,7 @@ path="res://.godot/imported/hurt.wav-e638edfaf88190ba3ffee0adc26b7375.sample"
 
 [deps]
 
-source_file="res://assets/audio/hurt.wav"
+source_file="res://assets/audio/combat/hurt.wav"
 dest_files=["res://.godot/imported/hurt.wav-e638edfaf88190ba3ffee0adc26b7375.sample"]
 
 [params]

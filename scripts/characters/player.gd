@@ -18,13 +18,10 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	process_movement()
+
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		attack()
-
-	if not is_attacking:
-		process_movement()
-	else:
-		velocity = Vector2.ZERO
 
 	process_animation()
 	move_and_slide()
@@ -35,8 +32,11 @@ func process_movement() -> void:
 
 	if direction != Vector2.ZERO:
 		velocity = direction * SPEED
-		last_direction = direction
-		update_hitbox_offset()
+
+		# Keep the active attack facing the direction it started in.
+		if not is_attacking:
+			last_direction = direction
+			update_hitbox_offset()
 	else:
 		velocity = Vector2.ZERO
 
@@ -65,6 +65,7 @@ func play_animation(prefix: String, direction: Vector2) -> void:
 
 func attack() -> void:
 	is_attacking = true
+	update_hitbox_offset()
 	hitbox.monitoring = true
 	swing_sword.play()
 	play_animation("attack", last_direction)

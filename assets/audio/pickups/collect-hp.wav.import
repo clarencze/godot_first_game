@@ -7,7 +7,7 @@ path="res://.godot/imported/collect-hp.wav-b33730f40733f4769fffa7f4b96099b2.samp
 
 [deps]
 
-source_file="res://assets/audio/collect-hp.wav"
+source_file="res://assets/audio/pickups/collect-hp.wav"
 dest_files=["res://.godot/imported/collect-hp.wav-b33730f40733f4769fffa7f4b96099b2.sample"]
 
 [params]
