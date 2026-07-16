@@ -1,15 +1,22 @@
 extends CharacterBody2D
 
 const SPEED: float = 300.0
+const MAX_HEALTH: int = 100
+const DAMAGE_INVULNERABILITY: float = 0.5
 
 var last_direction: Vector2 = Vector2.RIGHT
 var is_attacking: bool = false
 var hitbox_offset: Vector2
 var strength: int = 20
+var health: int = MAX_HEALTH
+var is_alive: bool = true
+var invulnerability_time: float = 0.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var swing_sword: AudioStreamPlayer2D = $SwingSword
 @onready var hitbox: Area2D = $Hitbox
+@onready var body: Area2D = $Body
+@onready var health_bar: Node2D = $HealthBar
 
 
 func _ready() -> void:
@@ -17,7 +24,12 @@ func _ready() -> void:
 	hitbox.monitoring = false
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	invulnerability_time = maxf(invulnerability_time - delta, 0.0)
+	if not is_alive:
+		velocity = Vector2.ZERO
+		return
+
 	process_movement()
 
 	if Input.is_action_just_pressed("attack") and not is_attacking:
@@ -64,6 +76,9 @@ func play_animation(prefix: String, direction: Vector2) -> void:
 
 
 func attack() -> void:
+	if not is_alive:
+		return
+
 	is_attacking = true
 	update_hitbox_offset()
 	hitbox.monitoring = true
@@ -94,7 +109,25 @@ func update_hitbox_offset() -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	print("Hitbox touched: ", body.name)
-
 	if is_attacking and body.has_method("take_damage"):
-		body.take_damage(strength, position)
+		body.take_damage(strength, global_position)
+
+
+func take_damage(damage: int, _attacker_position: Vector2) -> void:
+	if not is_alive or invulnerability_time > 0.0:
+		return
+
+	health = maxi(health - damage, 0)
+	health_bar.update_health(health)
+	invulnerability_time = DAMAGE_INVULNERABILITY
+	if health <= 0:
+		_die()
+
+
+func _die() -> void:
+	is_alive = false
+	is_attacking = false
+	velocity = Vector2.ZERO
+	hitbox.monitoring = false
+	body.monitorable = false
+	animated_sprite_2d.play("dead")

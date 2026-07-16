@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://pkje8kf8fn4x" path="res://assets/sprites/characters/player/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dlslgol3r4snx" path="res://scripts/characters/player.gd" id="1_g2els"]
 [ext_resource type="AudioStream" uid="uid://c1f12we23s2li" path="res://assets/audio/combat/sword.wav" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://cgiakm58gk76l" path="res://scenes/ui/health_bar.tscn" id="4_health"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vyb7"]
 atlas = ExtResource("1_3vyb7")
@@ -447,6 +448,9 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body" unique_id=1146618555]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_p3481")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_health")]
+position = Vector2(-9, -19)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

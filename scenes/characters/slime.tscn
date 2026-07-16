@@ -253,7 +253,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v5wyi")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"attack_down",
 "speed": 8.0
 }, {
@@ -279,7 +279,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cxm07")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"attack_right",
 "speed": 8.0
 }, {
@@ -305,7 +305,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_24adn")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"attack_up",
 "speed": 8.0
 }, {
@@ -486,4 +486,3 @@ position = Vector2(-9, 8)
 
 [connection signal="area_shape_entered" from="Sight" to="." method="_on_sight_area_shape_entered"]
 [connection signal="area_shape_exited" from="Sight" to="." method="_on_sight_area_shape_exited"]
-[connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]
